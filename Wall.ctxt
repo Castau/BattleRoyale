@@ -1,5 +1,9 @@
 #BlueJ class context
 comment0.target=Wall
 comment1.params=
-comment1.target=void\ act()
-numComments=2
+comment1.target=Wall()
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=void\ flip()
+numComments=4

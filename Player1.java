@@ -4,6 +4,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Player1 extends Actor
 {    
     private int health;
+    private boolean shooting = false;
+    private boolean isDead = false;
     
     public Player1(){
         this(100);
@@ -12,10 +14,10 @@ public class Player1 extends Actor
         this.health = health;
     }
     public void act() 
-    {
+    {   
         if(health<=0)
         {
-        getWorldOfType(testworld.class).win();
+                isDead = true;
         }
         
         if (Greenfoot.isKeyDown("up") && 
@@ -42,25 +44,36 @@ public class Player1 extends Actor
             setRotation(0); 
             move(5);
         }
-        if ("1".equals(Greenfoot.getKey()))
+        if ((Greenfoot.isKeyDown("1")))
         {
+            if(shooting == false)
+            {
             hit();
+            shooting = true;
+            }
         }
-             if (isTouching(Axe.class))
+        else
+        {
+        shooting = false;
+        }
+        if (isTouching(Axe.class))
         {
             health += -35;
             removeTouching(Axe.class);
         }
-    }    
-    
-     
-    
+    }       
     private void hit()
     {
      Knife knife = new Knife();
      getWorld().addObject(knife,getX(),getY());
      knife.setRotation(getRotation());
     }
-
-
+    public boolean isDead()
+    {
+        return isDead;
+    }
+    public int getHealth()
+    {
+        return health;
+    }
 }

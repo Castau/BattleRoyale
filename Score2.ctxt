@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=Score2
+comment1.params=p2health
+comment1.target=void\ setHealth2(int)
+comment2.params=p2death
+comment2.target=void\ setDeath2(boolean)
+numComments=3
