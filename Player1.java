@@ -73,14 +73,16 @@ public class Player1 extends Actor
         {
             health += -35;
             removeTouching(Axe.class);
+            
+            //lydfil afspilles hver gang spilleren mister health så længe han ikke er død
             if(health > 0)
             {
             Greenfoot.playSound("wound1.mp3");
-        }
+            }
         }
     }       
     private void hit()
-    // når hit kaldes laves en ny knife og rotationen sættes til den samme som player
+    // når hit kaldes laves en ny knife og rotationen sættes til den samme som player og lydfil afspilles
     {
      Knife knife = new Knife();
      getWorld().addObject(knife,getX(),getY());
@@ -92,7 +94,7 @@ public class Player1 extends Actor
     {
         return isDead;
     }
-    //retunerer healt, kaldes i battleworld og sættes i score    
+    //retunerer health, kaldes i battleworld og sættes i score    
     public int getHealth()
     {
         return health;

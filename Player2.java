@@ -1,3 +1,4 @@
+
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 
@@ -68,7 +69,8 @@ public class Player2 extends Actor
         {
         shooting = false;
         }
-        //hvis spiller 1 rør axe mistes 35 liv og axe fjernes
+        //hvis spiller 1 rør axe mistes 35 liv og axe fjernes 
+        //lydfil afspilles hver gang spilleren mister health så længe han ikke er død
         if (isTouching(Knife.class))
         {
             health += -35;
@@ -76,11 +78,11 @@ public class Player2 extends Actor
             if(health > 0)
             {
             Greenfoot.playSound("wound2.mp3");
-        }
+            }
         }
     }       
     private void hit()
-    // når hit kaldes laves en ny knife og rotationen sættes til den samme som player
+    // når hit kaldes laves en ny knife og rotationen sættes til den samme som player og lydfil afspilles
     {
      Axe axe = new Axe();
      getWorld().addObject(axe,getX(),getY());

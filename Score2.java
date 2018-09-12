@@ -16,7 +16,7 @@ public class Score2 extends Actor
     }
     public void setDeath2(boolean p2death)
     {
-        //kaldes i battleworld hver gang den acter og sætter player1death lig pideath.
+        //kaldes i battleworld hver gang den acter og sætter player1death lig p2death.
         player2death = p2death;
     }  
 }

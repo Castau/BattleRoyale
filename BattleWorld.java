@@ -13,9 +13,11 @@ public class BattleWorld extends World
         // metode der sætter banen op som vi ønsker det
         prepare();
     }
-    public void win()
-    {   // text der bliver vist når en af de to spillere dør
+        // text der bliver vist når en af de to spillere dør
         // stopper spillet når en af de to spillere dør
+        // afspiller lydfil når en spiller dør
+    public void win()
+    {   
         {
             showText("Player 1 is dead! \n\nPLAYER 2 WINS!", 300,280);
             Greenfoot.stop();
@@ -23,6 +25,9 @@ public class BattleWorld extends World
         }
        
     }
+        // text der bliver vist når en af de to spillere dør
+        // stopper spillet når en af de to spillere dør
+        // afspiller lydfil når en spiller dør
         public void win2()
     {
         {
@@ -32,9 +37,10 @@ public class BattleWorld extends World
         }
        
     }
+    
+        //bliver brugt i battleWorld() til at sætte objekterne hvor det ønskes ved nyt spil
     private void prepare()
     {   
-        //bliver brugt i battleWorld() til at sætte objekterne hvor det ønskes ved nyt spil 
         player1 = new Player1();
         addObject(player1,570,360);
         player2 = new Player2();
@@ -54,7 +60,7 @@ public class BattleWorld extends World
     }
     public void act()
     {   
-        // tjek på spilleres health og død og kald af win metode ved død
+        // tjek på spilleres health og informere score om health og død og kald af win metode ved død
         score1.setHealth1(player1.getHealth());
         score2.setHealth2(player2.getHealth());
         score1.setDeath1(player1.isDead());
