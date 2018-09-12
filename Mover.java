@@ -18,6 +18,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, and Greenfoot)
  * @author Michael Kolling
  * @version 1.0 (July 2007)
  */
+
+// kopieret fra hjemmesiden, hjælpeklasse der sørger for metoder til movement, rotation og kollision
 public class Mover extends Actor
 {
     private static final double WALKING_SPEED = 5.0;
