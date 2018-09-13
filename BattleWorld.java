@@ -7,6 +7,8 @@ public class BattleWorld extends World
         private Player2 player2;
         private Score1 score1;
         private Score2 score2;
+        private End end1;
+        private End end2;
     public BattleWorld()
     {   
         super(1200, 800, 1); 
@@ -19,9 +21,13 @@ public class BattleWorld extends World
     public void win()
     {   
         {
-            showText("Player 1 is dead! \n\nPLAYER 2 WINS!", 600,530);
+            //showText("Player 1 is dead! \n\nPLAYER 2 WINS!", 600,530);
+            end2 = new End();
+            addObject(end2,600,530);
+            end2.ending2();
             Greenfoot.stop();
             Greenfoot.playSound("death1.mp3");
+            Greenfoot.playSound("monsterkill.mp3");
         }
     }
         // text der bliver vist når en af de to spillere dør
@@ -30,9 +36,13 @@ public class BattleWorld extends World
         public void win2()
     {
         {
-            showText("Player 2 is dead! \n\nPLAYER 1 WINS!", 600,530);
+            //showText("Player 2 is dead! \n\nPLAYER 1 WINS!", 600,530);
+            end1 = new End();
+            addObject(end1,600,530);
+            end1.ending1();
             Greenfoot.stop();
             Greenfoot.playSound("death2.mp3");
+            Greenfoot.playSound("monsterkill.mp3");
         }
     }
     

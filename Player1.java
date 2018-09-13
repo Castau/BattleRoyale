@@ -28,7 +28,10 @@ public class Player1 extends Actor
     {  
         if (r==0)
         {
-        Greenfoot.playSound("StartFight.mp3");
+        GreenfootSound startfight = new GreenfootSound("StartFight.mp3");
+        startfight.setVolume(80);
+        startfight.play();
+        //Greenfoot.playSound("StartFight.mp3");
         r = 1;
         }
         
