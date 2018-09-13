@@ -48,6 +48,10 @@ public class BattleWorld extends World
         Wall wall2 = new Wall();
         addObject(wall2,1080,760);
         Wall wall3 = new Wall();
+        Wall wall4 = new Wall();
+        addObject(wall4,900,150);
+        Wall wall5 = new Wall();
+        addObject(wall5,300,650);
         Stimpac stimpac = new Stimpac();
         addObject(stimpac, 1180,20);
         Stimpac stimpac1 = new Stimpac();
@@ -66,13 +70,18 @@ public class BattleWorld extends World
         Greenfoot.playSound("UTback.mp3");
         Car car = new Car();
         addObject(car,Greenfoot.getRandomNumber(1100)+50,Greenfoot.getRandomNumber(700)+50);
+        
         //spawner 6 huller (fremfor at tilføje automatisk)
-         for(int i = 1; i < 7; i++)
+        for(int i = 1; i < 7; i++)
         { 
          Hole hole = new Hole();
          addObject(hole,Greenfoot.getRandomNumber(1100)+50,Greenfoot.getRandomNumber(700)+50);
+         //fjerner et hul hvis det rør ved andre objekter - kalder en metode fra Hole class'en
+         if(hole.touching())
+         {
+             removeObject(hole);
+         }
         }
-
     }
     public void act()
     {   
@@ -89,5 +98,11 @@ public class BattleWorld extends World
         {
             win2();
         } 
+        /*while(hole.touching())
+         {
+             removeObject(hole);
+             Hole hole = new Hole();
+             addObject(hole,Greenfoot.getRandomNumber(1100)+50,Greenfoot.getRandomNumber(700)+50);
+         }*/
     }
 }

@@ -16,6 +16,7 @@ public class Player1 extends Actor
     {
         //kalder sig selv (metoden neden under) med parameteren sat til 100
         this(100);
+        
     }
     public Player1(int health)
     {

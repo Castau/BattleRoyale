@@ -1,19 +1,38 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-/**
- * Write a description of class Hole here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
+
 public class Hole extends Actor
 {
-    /**
-     * Act - do whatever the Hole wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    public boolean touchWall = false;
+    public boolean touchStim = false;
+    public boolean touchHole = false;
     public void act() 
     {
-        // Add your action code here.
+        /*if (isTouching(Wall.class))
+        {
+            touchWall = true;
+        }
+        if (isTouching(Stimpac.class))
+        {
+            touchStim = true;
+        }
+        if (isTouching(Hole.class))
+        {
+           touchHole = true;
+        }*/
     }    
+    /*public boolean touchWall()
+    {    
+        return touchWall;
+    }*/
+    //metode til at fortælle om hole rør ved andre objekter, bruges i battleworld
+    public boolean touching()
+    {
+        if (isTouching(Wall.class) || isTouching(Stimpac.class) || isTouching(Hole.class))
+        {
+        return true;
+        
+        }
+        return false;
+    }
 }

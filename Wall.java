@@ -24,6 +24,10 @@ public class Wall extends Actor
         {
             removeTouching(Knife.class);
         } 
+       /*if (isTouching(Hole.class))
+        {
+            removeTouching(Hole.class); 
+        }*/
     }    
     public void flip()
     {
