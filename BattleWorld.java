@@ -80,6 +80,8 @@ public class BattleWorld extends World
          if(hole.touching())
          {
              removeObject(hole);
+             i--;
+             
          }
         }
     }
