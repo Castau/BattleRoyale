@@ -9,7 +9,7 @@ public class BattleWorld extends World
         private Score2 score2;
     public BattleWorld()
     {   
-        super(600, 400, 1); 
+        super(1200, 800, 1); 
         // metode der sætter banen op som vi ønsker det
         prepare();
     }
@@ -19,11 +19,10 @@ public class BattleWorld extends World
     public void win()
     {   
         {
-            showText("Player 1 is dead! \n\nPLAYER 2 WINS!", 300,280);
+            showText("Player 1 is dead! \n\nPLAYER 2 WINS!", 600,530);
             Greenfoot.stop();
             Greenfoot.playSound("death1.mp3");
         }
-       
     }
         // text der bliver vist når en af de to spillere dør
         // stopper spillet når en af de to spillere dør
@@ -31,32 +30,49 @@ public class BattleWorld extends World
         public void win2()
     {
         {
-            showText("Player 2 is dead! \n\nPLAYER 1 WINS!", 300,280);
+            showText("Player 2 is dead! \n\nPLAYER 1 WINS!", 600,530);
             Greenfoot.stop();
             Greenfoot.playSound("death2.mp3");
         }
-       
     }
     
         //bliver brugt i battleWorld() til at sætte objekterne hvor det ønskes ved nyt spil
     private void prepare()
     {   
         player1 = new Player1();
-        addObject(player1,570,360);
+        addObject(player1,1170,760);
         player2 = new Player2();
         addObject(player2,30,40);
         Wall wall = new Wall();
         addObject(wall,120,40);
         Wall wall2 = new Wall();
-        addObject(wall2,480,360);
+        addObject(wall2,1080,760);
         Wall wall3 = new Wall();
+        Stimpac stimpac = new Stimpac();
+        addObject(stimpac, 1180,20);
+        Stimpac stimpac1 = new Stimpac();
+        addObject(stimpac1, 20,770);
+        Stimpac stimpac2 = new Stimpac();
+        addObject(stimpac2, 590,340);
+        Stimpac stimpac3 = new Stimpac();
+        addObject(stimpac3, 590,460);
         //kalder metode fra wall-class til at vende wall3 90 grader
         wall3.flip();
-        addObject(wall3,300,200);
+        addObject(wall3,600,400);
         score1 = new Score1();  
         score2 = new Score2();
-        addObject(score1,220,30);
-        addObject(score2,380,30);
+        addObject(score2,420,30);
+        addObject(score1,680,30);
+        Greenfoot.playSound("UTback.mp3");
+        Car car = new Car();
+        addObject(car,Greenfoot.getRandomNumber(1100)+50,Greenfoot.getRandomNumber(700)+50);
+        //spawner 6 huller (fremfor at tilføje automatisk)
+         for(int i = 1; i < 7; i++)
+        { 
+         Hole hole = new Hole();
+         addObject(hole,Greenfoot.getRandomNumber(1100)+50,Greenfoot.getRandomNumber(700)+50);
+        }
+
     }
     public void act()
     {   

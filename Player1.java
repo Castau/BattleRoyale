@@ -7,7 +7,10 @@ public class Player1 extends Actor
     private int health;
     private boolean shooting = false;
     private boolean isDead = false;
-    
+    private int i = 0;
+    private int e = 0;
+    private int r = 0;
+    private int u = 0;
     //constructor metode - kalder sig selv og sætter players liv til 100
     public Player1()
     {
@@ -19,8 +22,27 @@ public class Player1 extends Actor
         //samme metode som ovenfor men med parameter for liv. Sætter sit eget liv lige det den får ind når den kaldes
         this.health = health;
     }
+    
     public void act() 
-    {   
+    {  
+        if (r==0)
+        {
+        Greenfoot.playSound("StartFight.mp3");
+        r = 1;
+        }
+        
+        if (isTouching(Hole.class))
+        {
+            i = 200;
+            removeTouching(Hole.class);
+            
+        }
+        i--;
+          if(isTouching(Stimpac.class))
+          {
+              health += 25;
+              removeTouching(Stimpac.class);
+          }
         // sætter isDead til true når spillerens liv er mindre eller lig 0
         if(health<=0)
         {
@@ -28,28 +50,28 @@ public class Player1 extends Actor
         }
         // hvis up trykkes ned og der ikke er en wall tæt på i den retning, gå frem
         if (Greenfoot.isKeyDown("up") && 
-        getOneObjectAtOffset(0,-25,Wall.class) ==null)
+        getOneObjectAtOffset(0,-25,Wall.class) ==null && i<=0)
         {
             setRotation(270); 
             move(3);  
         }
         // hvis down trykkes ned og der ikke er en wall tæt på i den retning, gå tilbage
         if (Greenfoot.isKeyDown("down") && 
-        getOneObjectAtOffset(0,25,Wall.class) ==null)
+        getOneObjectAtOffset(0,25,Wall.class) ==null && i<=0)
         {
             setRotation(90); 
             move(3); 
         }
         // hvis left trykkes ned og der ikke er en wall tæt på i den retning, gå left
         if (Greenfoot.isKeyDown("left") && 
-        getOneObjectAtOffset(-25,0,Wall.class) ==null) 
+        getOneObjectAtOffset(-25,0,Wall.class) ==null && i<=0) 
         {
             setRotation(180); 
             move(3);
         }
         // hvis right trykkes ned og der ikke er en wall tæt på i den retning, gå right
         if (Greenfoot.isKeyDown("right") && 
-        getOneObjectAtOffset(25,0,Wall.class) ==null) 
+        getOneObjectAtOffset(25,0,Wall.class) ==null && i<=0) 
         {
             setRotation(0); 
             move(3);
@@ -57,21 +79,24 @@ public class Player1 extends Actor
         // hvis 1 trykkes ned og shooting er false skydes og shooting sættes til true (kun et skud pr key press)
         if ((Greenfoot.isKeyDown("1")))
         {
-            if(shooting == false)
+            if(shooting == false && e <=0)
             {
             hit();
             shooting = true;
+            e = 15;
             }
         }
         // hvis 1 ikke trykkes ned sættes shooting til false igen
-        else
+        else 
         {
         shooting = false;
         }
+        e--;
+        
         //hvis spiller 1 rør axe mistes 35 liv og axe fjernes
         if (isTouching(Axe.class))
         {
-            health += -35;
+            health += -18;
             removeTouching(Axe.class);
             
             //lydfil afspilles hver gang spilleren mister health så længe han ikke er død
@@ -80,6 +105,19 @@ public class Player1 extends Actor
             Greenfoot.playSound("wound1.mp3");
             }
         }
+        if (isTouching(Car.class) && u <= 0)
+        {
+            health += -18;
+            u = 60;
+            
+            //lydfil afspilles hver gang spilleren mister health så længe han ikke er død
+            if(health > 0)
+            {
+            Greenfoot.playSound("wound1.mp3");
+            Greenfoot.playSound("CarHorn.mp3");
+            }
+        }
+        u--;
     }       
     private void hit()
     // når hit kaldes laves en ny knife og rotationen sættes til den samme som player og lydfil afspilles
@@ -99,4 +137,5 @@ public class Player1 extends Actor
     {
         return health;
     }
+  
 }
